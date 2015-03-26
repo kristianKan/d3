@@ -86,18 +86,6 @@ d3.behavior.zoom = function() {
     });
   }
 
-  zoom.xExtent = function(x) {
-    if (!arguments.length) return xExtent;
-    xExtent = (x == null) ? d3_behavior_scaleInfinity : x.map(Number);
-    return zoom;
-  };
-
-  zoom.yExtent = function(x) {
-    if (!arguments.length) return yExtent;
-    yExtent = (x == null) ? d3_behavior_scaleInfinity : x.map(Number);
-    return zoom;
-  };
-
   zoom.translate = function(_) {
     if (!arguments.length) return [view.x, view.y];
     view = {x: +_[0], y: +_[1], k: view.k}; // copy-on-write
@@ -115,6 +103,18 @@ d3.behavior.zoom = function() {
   zoom.scaleExtent = function(_) {
     if (!arguments.length) return scaleExtent;
     scaleExtent = _ == null ? d3_behavior_zoomInfinity : [+_[0], +_[1]];
+    return zoom;
+  };
+
+  zoom.xExtent = function(x) {
+    if (!arguments.length) return xExtent;
+    xExtent = (x == null) ? d3_behavior_scaleInfinity : x.map(Number);
+    return zoom;
+  };
+
+  zoom.yExtent = function(x) {
+    if (!arguments.length) return yExtent;
+    yExtent = (x == null) ? d3_behavior_scaleInfinity : x.map(Number);
     return zoom;
   };
 
